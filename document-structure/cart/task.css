@@ -89,3 +89,10 @@ body {
 .product-shadow {
   position: absolute;
 }
+
+.product__remove {
+  background: rgb(255, 196, 0);
+  padding: 5px 5px;
+  color: red;
+  cursor: pointer;
+}

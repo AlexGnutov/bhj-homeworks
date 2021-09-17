@@ -36,19 +36,15 @@ signInButton.addEventListener('click', (e) => {
 function signInRequest(formData) {
     const req = new XMLHttpRequest();
     req.open('POST', url);
+    req.responseType = "json";
     req.onreadystatechange = (e) => {
         if (req.readyState === 4 && req.status === 200) {
-            try {
-                const reply = JSON.parse(req.response);
-                console.log(reply);
-                if (reply.success === true) {
-                    userSignIn(reply.user_id);
-                } else if (reply.success === false) {
-                    wrongSignInData();
-                }
-            } catch(e) {
-                console.log(e.message)
-            } 
+            const reply = req.response;
+            if (reply.success === true) {
+                userSignIn(reply.user_id);
+            } else if (reply.success === false) {
+                wrongSignInData();
+            }
         }
     }
     req.send(formData);
@@ -77,5 +73,7 @@ function wrongSignInData() {
 //Действия при нажатии кнопки выйти
 logoutButton.addEventListener('click', (e) => {
     delete localStorage.userId;
-    location.reload();
+    userId.textContent = "";
+    welcome.classList.remove('welcome_active');
+    singIn.classList.add('signin_active');
 })

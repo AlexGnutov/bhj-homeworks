@@ -2,9 +2,7 @@ const clearButton = document.getElementById('clear__button');
 const editor = document.getElementById('editor');
 
 window.onload = () => {
-    if (localStorage.editortext) {
-        editor.value = localStorage.editortext;
-    }
+    editor.value = localStorage.getItem('editortext');    
 }
 
 clearButton.addEventListener('click', (e) => {

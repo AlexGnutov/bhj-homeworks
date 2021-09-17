@@ -6,12 +6,11 @@ window.onload = () => {
     const modalShown = getCookie('modalShown');
 
     if (!modalShown) {
-        modalWindow.classList.toggle('modal_active');
-        document.cookie = 'modalShown=yes';
-        console.log(document.cookie);
+        modalWindow.classList.toggle('modal_active');        
     }
 
     modalClose.addEventListener('click', (e) => {
+        document.cookie = 'modalShown=yes';
         modalWindow.classList.toggle('modal_active');
     });
 }
